@@ -1,0 +1,92 @@
+\documentclass[10pt]{article}
+\usepackage{my_cmd,my_a4l,czech,fancyhdr}
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{0.5cm}
+\setlength{\textwidth}{269mm}
+\newcommand{\InitCircles}[2]{
+ \newcounter{xOffset}
+ \setcounter{xOffset}{#1}
+ \addtocounter{xOffset}{10}
+ \newcounter{xOffsetReal}
+ \newcounter{yOffset}
+ \setcounter{yOffset}{#2}
+ \newcounter{yOffsetReal}
+}
+\newcommand{\Circlesiii}{
+ \unitlength=0.1mm
+ \begin{picture}(0,0)
+  \setcounter{xOffsetReal}{\value{xOffset}}
+  \setcounter{yOffsetReal}{\value{yOffset}}
+  \addtocounter{xOffsetReal}{300}
+  \put(\value{xOffsetReal},\value{yOffsetReal}){\circle{60}}
+  \addtocounter{xOffsetReal}{1085}
+  \put(\value{xOffsetReal},\value{yOffsetReal}){\circle{60}}
+  \addtocounter{xOffsetReal}{1085}
+  \put(\value{xOffsetReal},\value{yOffsetReal}){\circle{60}}
+ \end{picture}
+}
+\newcommand{\hdr}[2]{\parbox[][12pt][c]{#2cm}{\makebox[#2cm]{#1}}}
+\newcommand{\hdrl}[2]{\parbox[][12pt][c]{#2cm}{\makebox[#2cm][l]{#1}}}
+\newcommand{\hdrn}[1]{\parbox[][12pt][c]{1.625cm}{\makebox[1.625cm]{#1}}}
+\newcommand{\hdrm}[1]{\parbox[][12pt][c]{1.535cm}{\makebox[1.535cm]{#1}}}
+\begin{document}
+ \InitCircles{20}{230}
+ \ifpdf
+   \pdfpagewidth=297mm
+   \pdfpageheight=210mm
+ \fi
+ \small
+ \pagestyle{fancy}
+ \leftmarg{0mm}
+ \renewcommand{\arraystretch}{1.05}
+ \lhead{Penìžní deník fy. Autoservis Lipinský, rok {v:year}}
+ \cfoot{}
+ \thispagestyle{empty}
+ \Circlesiii
+ \makebox[1mm]{}
+
+ \vspace{3cm}
+ \centr{\fontfamily{ppl}\fontsize{72}{72}\selectfont\bold{Penìžní deník}}
+
+ \vspace{1cm}
+ \centr{\bold{\Huge Rok: {v:year}}}
+
+ \vspace{1cm}
+ \centr{\bold{\Huge Bohumil Lipinský -- Autoservis}}
+ \centr{\bold{\Huge Chyòava 373, 267 07}}
+ <t:page>
+ \clearpage
+ \Circlesiii
+ 
+ \rhead{Strana {v:pageno}/a}
+ \lhead{Penìžní deník fy. Autoservis Lipinský, rok {v:year}}
+ \tabcolsep=2pt
+ \begin{tabular}{|r|c|l|l|r|r|r|r|r|r|r|r|r|r|}
+  \hline
+  & & & & \multicolumn{3}{|c|}{\bold{Pokladna}} & \multicolumn{3}{|c|}{\bold{Bankovní úèet}} &\multicolumn{4}{|c|}{\bold{Danìné pøíjmy}} \\
+  \hdr{ø.}{0.6} & \hdr{Datum}{1} & \hdr{Doklad}{1} & \hdr{TEXT}{5.85} & \hdrn{pøíjmy} & \hdrn{výdaje} & \hdrn{stav} & \hdrn{pøíjmy} &\hdrn{výdaje} & \hdrn{stav} & \hdrn{celkem} & \hdrn{zboží} & \hdrn{výrobky} & \hdrn{ostatní} \\
+ \hline
+  <t:linei>
+    {v:content} \\
+  </t:linei>
+  \hline
+ \end{tabular}
+ \clearpage
+ \Circlesiii
+
+ \lhead{Penìžní deník fy. Autoservis Lipinský, rok {v:year}}
+ \rhead{Strana {v:pageno}/b}
+ \tabcolsep=2pt
+ \begin{tabular}{|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|}
+  \hline
+  \multicolumn{5}{|c|}{\bold{Výdaje nutné na udržení pøíjmù}}&\multicolumn{4}{|c|}{\bold{Nedanìné pøíjmy}}&\multicolumn{7}{|c|}{\bold{Výdaje nezahrnované do základu danì}} \\
+  \hdrm{celkem} & \hdrm{Materiál} & \hdrm{zboží} & \hdrm{pojištìní}& \hdrm{režie} & \hdrm{zdanìné} & \hdrm{úvìry} & \hdrm{osobní} &\hdrm{ostatní} & \hdrm{celkem} & \hdrm{HM,NHM} & \hdrm{daò z pøíj.} & \hdrm{rezerva} & \hdrm{osob. sp.}& \hdrm{dary}& \hdrm{ostatní} \\
+  \hline
+  <t:lineii>
+    {v:content} \\
+  </t:lineii>
+  \hline
+ \end{tabular}
+</t:page>
+
+ \end{document}

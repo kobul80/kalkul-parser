@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<project name="kalkul-parser" default="make-all" basedir=".">
+    <target name="clean">
+    	<delete file="kalkul-parser.jar"/>
+    </target>
+	
+	<target name="make-all" depends="clean">
+	  <jar description="Parser pro penezni denik z programu Kalkul1" destfile="kalkul-parser.jar">	  	
+	    <fileset dir="bin" id="id">
+    		<include name="**/*"/>
+		</fileset>
+	  	<manifest>
+	  	  <attribute name="Main-Class" value="cz.kobul.kalkulparser.KalkulParserMain"/>	 
+	  	</manifest>
+	  </jar>
+	</target>
+</project>
